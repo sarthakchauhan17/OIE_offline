@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>EmployeeAng</title><base href="/"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.addEventListener('load', function updateOnlineStatus(event) {
+
+            var condition = navigator.onLine ? "online" : "offline";
+            document.getElementById("status").value = condition;
+            self.addEventListener('load', updateOnlineStatus);
+            self.addEventListener('online', updateOnlineStatus);
+            self.addEventListener('offline', updateOnlineStatus);
+            window.addEventListener('load', updateOnlineStatus);
+            window.addEventListener('online', updateOnlineStatus);
+            window.addEventListener('offline', updateOnlineStatus);
+        });
+
+        // Cache signature post request
+        //This retrieves all the information about the POST request including the formdata body, where the URL contains updateSignature.
+        // Resubmit offline signature requests
+        //This resubmits all cached POST results and then empties the array.</script><link href="styles.d3dd8b1f6e6454f98af8.bundle.css" rel="stylesheet"/></head><!-- module.exports = {
+  staticFileGlobs: [
+    '/index.html',
+    '/manifest.json',
+    '/bower_components/webcomponentsjs/webcomponents-lite.min.js',
+    '/images/*'
+  ], --><!--  navigateFallback: '/index.html',
+  navigateFallbackWhitelist: [/^(?!.*\.html$|\/data\/).*/] --><body><app-employee></app-employee><script type="text/javascript" src="inline.f04bbeff13e56f504f28.bundle.js"></script><script type="text/javascript" src="polyfills.4461772dfa00c77ee03d.bundle.js"></script><script type="text/javascript" src="scripts.806effac119676237f10.bundle.js"></script><script type="text/javascript" src="main.025b65a8c6b05102bcc0.bundle.js"></script></body></html>

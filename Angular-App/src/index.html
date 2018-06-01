@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EmployeeAng</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        window.addEventListener('load', function updateOnlineStatus(event) {
+
+            var condition = navigator.onLine ? "online" : "offline";
+            document.getElementById("status").value = condition;
+            self.addEventListener('load', updateOnlineStatus);
+            self.addEventListener('online', updateOnlineStatus);
+            self.addEventListener('offline', updateOnlineStatus);
+            window.addEventListener('load', updateOnlineStatus);
+            window.addEventListener('online', updateOnlineStatus);
+            window.addEventListener('offline', updateOnlineStatus);
+        });
+
+        // Cache signature post request
+        //This retrieves all the information about the POST request including the formdata body, where the URL contains updateSignature.
+        // Resubmit offline signature requests
+        //This resubmits all cached POST results and then empties the array.
+    </script>
+</head>
+<!-- module.exports = {
+  staticFileGlobs: [
+    '/index.html',
+    '/manifest.json',
+    '/bower_components/webcomponentsjs/webcomponents-lite.min.js',
+    '/images/*'
+  ], -->
+<!--  navigateFallback: '/index.html',
+  navigateFallbackWhitelist: [/^(?!.*\.html$|\/data\/).*/] -->
+
+<body>
+    <app-employee></app-employee>
+</body>
+
+</html>

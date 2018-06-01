@@ -1,0 +1,140 @@
+<div class="container">
+  <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+    <div class="form-container">
+      <div>
+
+        <h1 class="h1 text-center">Employee Form</h1>
+
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" formControlName="firstName" class="form-control" class="form-control" />
+              <div class="alert alert-danger" *ngIf="!rForm.controls['firstName'].valid && rForm.controls['firstName'].touched">{{ titleAlert }}</div>
+            </div>
+          </div>
+
+
+
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control" />
+
+            </div>
+            <div class="alert alert-danger" *ngIf="!rForm.controls['lastName'].valid && rForm.controls['lastName'].touched">{{ titleAlert }}</div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>Contact</label>
+              <input type="text" formControlName="contact" class="form-control" />
+              <div class="alert alert-danger" *ngIf="!rForm.controls['contact'].valid && rForm.controls['contact'].touched">{{ titleAlert }}</div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+
+            <div class="form-group">
+              <label>Remarks</label>
+              <textarea formControlName="remarks" class="form-control remark"></textarea>
+            </div>
+            <div class="alert alert-danger" *ngIf="!rForm.controls['remarks'].valid && rForm.controls['remarks'].touched">You must specify remarks</div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <!--  <label>Gender</label>
+          <div *ngFor="let g of gender.controls; let i=index">
+            <input type="radio" formControlName="gender" [formControl]="g" name="gender" [value]="employee.gender[i].id" checked={{employee.gender[i].selected}}/>
+            {{employee.gender[i].name}}
+          </div>
+          
+          <label>Education Qualification</label>
+          <div *ngFor="let e of eduqual.controls; let i=index">
+            <input type="checkbox" formControlName="eduqual" [formControl]="e" name="eduqual" [value]="employee.eduqual[i].id"/>{{employee.eduqual[i].name}}
+          </div> -->
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label>Status</label>
+              <input type="text" id="status" formControlName="status" [(ngModel)]="status" class="form-control" />
+            </div>
+          </div>
+          <div class="col-lg-6 submit-buttons">
+            <div class="form-group">
+              <input type="submit" class="button expanded" value="Submit Form" class="btn btn-success">
+              <input type="button" class="button expanded" value="Submit offline Requests" (click)="addCachedData()" class="btn btn-primary"
+              />
+            </div>
+
+
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="left container">
+  <div *ngIf="response.employee!=null">
+    <div class="form-container">
+
+      <!--<p>{{ firstName }}</p>
+            <p>{{ lastName }}</p>
+            <p>{{ employee.gender }}</p>  
+            <p>{{ employee.eduqual }}</p>
+            <p>{{ remarks }}</p>-->
+      <div>
+        <h1 class="text-center">Employee Details</h1>
+        <table class="table table-striped table-hover" ng-show="Employees">
+          <thead>
+            <tr class="info">
+              <td>
+                First Name
+              </td>
+              <td>
+                Last Name
+              </td>
+              <td>
+                Contact No.
+              </td>
+              <td>
+                Remarks
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of response.employee"  >
+              <td>{{emp.firstName}}</td>
+              <td>{{emp.lastName}}</td>
+              <td>{{emp.contact}}</td>
+              <td>{{emp.remarks}}</td>
+            </tr>
+              <tr>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <app-pagination (goPage)="goToPage($event)" (goNext)="onNext()" (goPrev)="onPrev()" [pagesToShow]="10" [page]="page" [perPage]="limit"
+          [count]="total">
+        </app-pagination>
+      </div>
+    </div>
+  </div>
+</div>
